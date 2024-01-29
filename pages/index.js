@@ -10,7 +10,6 @@ export default function SpotLightPage({ pieces }) {
         image={randomArtPiece.imageSource}
         artist={randomArtPiece.artist}
       />
-      {/* <ArtPieces pieces={data} /> */}
     </div>
   );
 }
