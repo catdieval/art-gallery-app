@@ -1,6 +1,16 @@
 import Image from "next/image";
+import FavoriteButton from "../FavoriteButton";
 
-export default function ArtPieceDetails({ image, title, artist, year, genre }) {
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  onBack,
+  isFavorite,
+  onToggleFavorite,
+}) {
   return (
     <>
       <h2>{title}</h2>
@@ -10,6 +20,11 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
         <li>Year: {year}</li>
         <li>Genre: {genre}</li>
       </ul>
+      <button onClick={onBack}> &laquo; Back </button>
+      <FavoriteButton
+        onToggleFavorite={onToggleFavorite}
+        isFavorite={isFavorite}
+      />
     </>
   );
 }

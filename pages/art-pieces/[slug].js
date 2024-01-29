@@ -21,6 +21,7 @@ export default function ArtPieceDetailsPage({ pieces }) {
       artist={selectedArtPiece.artist}
       year={selectedArtPiece.year}
       genre={selectedArtPiece.genre}
+      onBack={() => router.back()}
     />
   );
 }
