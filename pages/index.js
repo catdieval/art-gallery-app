@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import ArtPieces from "../components/ArtPieces";
+import Spotlight from "@/components/Spotlight";
 
 const fetcher = async (url) => {
   const response = await fetch(url);
@@ -33,8 +34,14 @@ export default function ArtGallery() {
     );
   }
 
+  const randomArtPiece = data[Math.floor(Math.random() * data.length)];
+
   return (
     <div>
+      <Spotlight
+        image={randomArtPiece.imageSource}
+        artist={randomArtPiece.artist}
+      />
       <ArtPieces pieces={data} />
     </div>
   );
