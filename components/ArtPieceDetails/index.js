@@ -11,6 +11,7 @@ const BackButton = styled.button`
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   margin-bottom: 1rem;
+  margin-left: 1rem;
   cursor: pointer;
 `;
 
@@ -33,10 +34,10 @@ export default function ArtPieceDetails({
 }) {
   return (
     <>
+      <BackButton type="button" onClick={onBack}>
+        &laquo; Go back
+      </BackButton>
       <Wrapper>
-        <BackButton type="button" onClick={onBack}>
-          &laquo; Go back
-        </BackButton>
         <h2>{title}</h2>
         <ImageContainer>
           <FavoriteButton
