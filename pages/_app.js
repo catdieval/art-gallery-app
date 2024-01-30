@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
-    "Art-Piece-Info",
+    "Art-Pieces-Info",
     { defaultValue: [] }
   );
 
@@ -53,6 +53,8 @@ export default function App({ Component, pageProps }) {
       setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
     }
   }
+
+  function addComment() {}
 
   return (
     <Layout>

@@ -3,6 +3,9 @@ import { ImageContainer } from "../ImageContainer.js";
 import { StyledImage } from "../StyledImage.js";
 import FavoriteButton from "../FavoriteButton/index.js";
 import styled from "styled-components";
+import CommentForm from "../CommentForm/index.js";
+import Comments from "../Comments/index.js";
+// import useState from "react";
 
 const BackButton = styled.button`
   background-color: purple;
@@ -30,7 +33,15 @@ export default function ArtPieceDetails({
   isFavorite,
   onToggleFavorite,
   onBack,
+  addComment,
+  comments,
 }) {
+  // const [comment, setComment] = useState("");
+
+  const handleCommentSubmit = (comment) => {
+    addComment(comment);
+  };
+
   return (
     <>
       <Wrapper>
@@ -57,6 +68,11 @@ export default function ArtPieceDetails({
           <li>Year: {year}</li>
           <li>Genre: {genre}</li>
         </List>
+        {comments && <Comments comments={comments} />}
+        <CommentForm
+          onSubmitComment={handleCommentSubmit}
+          addComment={addComment}
+        />
       </Wrapper>
     </>
   );
