@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
     "https://example-apis.vercel.app/api/art",
     fetcher
   );
-  const [artPieceInfo, setartPieceInfo] = useLocalStorageState(
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
     "Art-Piece-Info",
     { defaultValue: [] }
   );
@@ -40,17 +40,17 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleToggleFavorite(slug) {
-    const artPiece = artPieceInfo.find((piece) => piece.slug === slug);
+    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
     if (artPiece) {
-      setartPieceInfo(
-        artPieceInfo.map((pieceInfo) =>
-          pieceInfo.slug === slug
-            ? { slug, isFavorite: !pieceInfo.isFavorite }
-            : pieceInfo
+      setArtPiecesInfo(
+        artPiecesInfo.map((artPieceInfo) =>
+          artPieceInfo.slug === slug
+            ? { slug, isFavorite: !artPieceInfo.isFavorite }
+            : artPieceInfo
         )
       );
     } else {
-      setartPieceInfo([...artPieceInfo, { slug, isFavorite: true }]);
+      setArtPiecesInfo([...artPiecesInfo, { slug, isFavorite: true }]);
     }
   }
 
@@ -60,6 +60,7 @@ export default function App({ Component, pageProps }) {
       <Component
         {...pageProps}
         pieces={data}
+        artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggleFavorite}
       />
     </Layout>

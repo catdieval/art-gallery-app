@@ -1,21 +1,29 @@
-import Image from "next/image";
-import FavoriteButton from "../FavoriteButton";
+import { Wrapper } from "../Wrapper.js";
+import { ImageContainer } from "../ImageContainer.js";
+import { StyledImage } from "../StyledImage.js";
+import FavoriteButton from "../FavoriteButton/index.js";
 
 export default function Spotlight({
-  artist,
   image,
-  title,
+  artist,
   onToggleFavorite,
   isFavorite,
 }) {
   return (
-    <div>
-      <Image src={image} width={200} height={200} alt={title} />
+    <Wrapper>
+      <ImageContainer>
+        <FavoriteButton
+          isFavorite={isFavorite}
+          onToggleFavorite={onToggleFavorite}
+        />
+        <StyledImage
+          src={image}
+          width={580}
+          height={580}
+          alt={`spotlight: ${artist}`}
+        />
+      </ImageContainer>
       <h2>{artist}</h2>
-      <FavoriteButton
-        onToggleFavorite={onToggleFavorite}
-        isFavorite={isFavorite}
-      />
-    </div>
+    </Wrapper>
   );
 }

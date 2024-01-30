@@ -2,7 +2,11 @@ import { useRouter } from "next/router";
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 import { useState, useEffect } from "react";
 
-export default function ArtPieceDetailsPage({ pieces }) {
+export default function ArtPieceDetailsPage({
+  pieces,
+  artPiecesInfo,
+  onToggleFavorite,
+}) {
   const router = useRouter();
   const { slug } = router.query;
   const [selectedArtPiece, setSelectedArtPiece] = useState(null);
@@ -22,6 +26,11 @@ export default function ArtPieceDetailsPage({ pieces }) {
       year={selectedArtPiece.year}
       genre={selectedArtPiece.genre}
       onBack={() => router.back()}
+      isFavorite={
+        artPiecesInfo.find((piece) => piece.slug === selectedArtPiece.slug)
+          ?.isFavorite
+      }
+      onToggleFavorite={() => onToggleFavorite(selectedArtPiece.slug)}
     />
   );
 }
