@@ -48,6 +48,14 @@ export default function Navigation() {
             Art Pieces
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            href="/favorites"
+            $isActive={router.pathname === "/favorites"}
+          >
+            Favorites
+          </NavLink>
+        </li>
       </List>
     </NavWrapper>
   );
